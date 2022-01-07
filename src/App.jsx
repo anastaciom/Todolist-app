@@ -9,6 +9,7 @@ function App() {
   const [showAddAlert, setshowAddAlert] = useState(false);
   const [showRemoveAlert, setshowRemoveAlert] = useState(false);
   const [taskEdited, setTaskEdited] = useState("")
+  
   useEffect(() => {
     setTimeout(() => {
       setshowAddAlert(false);
