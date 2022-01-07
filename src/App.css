@@ -154,3 +154,29 @@
 #alert-add{
   border-bottom: 4px #4fff78 solid;
 }
+
+.inputEdit{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+ 
+}
+
+.inputEdit input{
+border: none;
+outline: none;
+padding: 10px;
+border-radius: 10px;
+flex: 1;
+background-color: #39235c;
+color: #fff;
+letter-spacing: 1px;
+}
+
+.inputEdit button{
+  color: #fff;
+  font-size: 15px;
+  padding: 10px;
+  background-color: #00000085;
+}

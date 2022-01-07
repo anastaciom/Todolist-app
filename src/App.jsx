@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { DeleteForever, Edit, CheckCircle, Cancel } from "@mui/icons-material/";
 
+
 function App() {
   const [task, setTask] = useState("");
-
   const [newTasks, setNewTasks] = useState([]);
   const [showAddAlert, setshowAddAlert] = useState(false);
   const [showRemoveAlert, setshowRemoveAlert] = useState(false);
-
+  const [taskEdited, setTaskEdited] = useState("")
   useEffect(() => {
     setTimeout(() => {
       setshowAddAlert(false);
@@ -53,6 +53,28 @@ function App() {
     }
   }
 
+  function handleClickEditFalse(id){
+    let selected = [...newTasks].find((task) => task.id === id);
+    if(selected.toEdit){
+        selected.toEdit = false
+        setNewTasks([...newTasks])
+    }else{
+      selected.toEdit = true
+    }
+  }
+
+  function handleClickEditTask(id){
+    let selected = [...newTasks].find((task) => task.id === id);
+    if(selected.description){
+        selected.description = taskEdited
+        selected.toEdit = false
+        setNewTasks([...newTasks])
+        setTaskEdited('')
+    }else{
+      selected.toEdit = true
+    }
+  }
+
   return (
     <div className="App">
       <div id="todoForm">
@@ -77,7 +99,15 @@ function App() {
           ) : (
             newTasks.map((task) => (
               <li id={task.id} key={task.id} className="taskItem">
-                {task.toEdit ? <h4>editavel</h4> : <>
+                {task.toEdit ? <div className="inputEdit">
+                  <input 
+                  type="text" 
+                  placeholder={task.description} 
+                  value={taskEdited} 
+                  onChange={e=>setTaskEdited(e.target.value)}/>
+                  <button onClick={()=>handleClickEditTask(task.id)}>Edit</button>
+                  <button onClick={()=>handleClickEditFalse(task.id)}>Back</button>
+                </div> : <>
                   <p>
                   {task.description.length > 20
                     ? task.description.substring(0, 20) + "..."
@@ -92,11 +122,7 @@ function App() {
                   </button>
                 </div>
                 </>}
-                  
-                
               </li>
-              
-              
             ))
           )}
         </ul>
