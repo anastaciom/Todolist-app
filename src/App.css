@@ -72,6 +72,8 @@
   padding: 20px;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
 }
 
 #listTask::-webkit-scrollbar-thumb {
@@ -190,4 +192,8 @@
   font-size: 15px;
   padding: 10px;
   background-color: #00000085;
+}
+.isChecked {
+  text-decoration: line-through;
+  opacity: 0.2;
 }
