@@ -3,7 +3,6 @@ import "./App.css";
 import Alerts from "./components/Alerts";
 import CreateTasks from "./components/CreateTasks";
 
-
 function App() {
 
   const [showAddAlert, setshowAddAlert] = useState(false);

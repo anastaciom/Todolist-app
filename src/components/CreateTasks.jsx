@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import ListTasks from "./ListTasks";
 
 export default function CreateTasks({setshowAddAlert, setshowRemoveAlert}) {
+    
     const [task, setTask] = useState("");
     const [newTasks, setNewTasks] = useState([]);
 
