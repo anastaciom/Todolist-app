@@ -269,6 +269,7 @@
 
   .inputEdit input {
     padding: 8px;
+    width: 80%;
   }
 
   .inputEdit button {
