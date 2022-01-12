@@ -1,30 +1,42 @@
-import React,{useState} from "react";
+import React, { useState, useEffect } from "react";
 import ListTasks from "./ListTasks";
 
-export default function CreateTasks({setshowAddAlert, setshowRemoveAlert}) {
-    
-    const [task, setTask] = useState("");
-    const [newTasks, setNewTasks] = useState([]);
+export default function CreateTasks({ setshowAddAlert, setshowRemoveAlert }) {
+  
+  function getTasks() {
+    const tasksStore = JSON.parse(localStorage.getItem("tasks"));
 
-    function handleClickKey(e) {
-        if (e.key === "Enter") {
-          if (task !== "") {
-            setNewTasks([
-              ...newTasks,
-              {
-                id: Math.random(),
-                description: task,
-                toEdit: false,
-                checked: false,
-              },
-            ]);
-            setshowAddAlert(true);
-            setTask("");
-          } else {
-            return alert("Fill in the field, before adding!!!");
-          }
-        }
+    if (tasksStore) {
+      return JSON.parse(localStorage.getItem("tasks"));
+    }
+  }
+
+  const [task, setTask] = useState("");
+  const [newTasks, setNewTasks] = useState(getTasks());
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+  }, [newTasks]);
+
+  function handleClickKey(e) {
+    if (e.key === "Enter") {
+      if (task !== "") {
+        setNewTasks([
+          ...newTasks,
+          {
+            id: Math.random(),
+            description: task,
+            toEdit: false,
+            checked: false,
+          },
+        ]);
+        setshowAddAlert(true);
+        setTask("");
+      } else {
+        return alert("Fill in the field, before adding!!!");
       }
+    }
+  }
 
   return (
     <div id="todoForm">

@@ -39,15 +39,16 @@ export default function Task({
     let selected = [...newTasks].find((task) => task.id === id);
 
     if (selected.description) {
-
-        if(taskEdited !== ''){
-            selected.description = taskEdited;
-            selected.toEdit = false;
-            setNewTasks([...newTasks]);
-            setTaskEdited("");
-        }else{
-            alert('Type something in the "Input", but if you want to keep the previous task click "Back"')
-        }
+      if (taskEdited !== "") {
+        selected.description = taskEdited;
+        selected.toEdit = false;
+        setNewTasks([...newTasks]);
+        setTaskEdited("");
+      } else {
+        alert(
+          'Type something in the "Input", but if you want to keep the previous task click "Back"'
+        );
+      }
     } else {
       selected.toEdit = true;
     }

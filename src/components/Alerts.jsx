@@ -1,10 +1,10 @@
-import React from 'react'
-import {CheckCircle, Cancel } from "@mui/icons-material/";
+import React from "react";
+import { CheckCircle, Cancel } from "@mui/icons-material/";
 
-export default function Alerts({showAddAlert, showRemoveAlert}) {
-    return (
-        <>
-             {showAddAlert || showRemoveAlert ? (
+export default function Alerts({ showAddAlert, showRemoveAlert }) {
+  return (
+    <>
+      {showAddAlert || showRemoveAlert ? (
         <div
           className="alert"
           id={
@@ -22,6 +22,6 @@ export default function Alerts({showAddAlert, showRemoveAlert}) {
           )}
         </div>
       ) : null}
-        </>
-    )
+    </>
+  );
 }

@@ -4,10 +4,9 @@ import Alerts from "./components/Alerts";
 import CreateTasks from "./components/CreateTasks";
 
 function App() {
-
   const [showAddAlert, setshowAddAlert] = useState(false);
   const [showRemoveAlert, setshowRemoveAlert] = useState(false);
- 
+
   useEffect(() => {
     setTimeout(() => {
       setshowAddAlert(false);
@@ -15,10 +14,12 @@ function App() {
     }, 3000);
   }, [showAddAlert, showRemoveAlert]);
 
-
   return (
     <div className="App">
-     <CreateTasks setshowAddAlert={setshowAddAlert} setshowRemoveAlert={setshowRemoveAlert}/>
+      <CreateTasks
+        setshowAddAlert={setshowAddAlert}
+        setshowRemoveAlert={setshowRemoveAlert}
+      />
       <Alerts showAddAlert={showAddAlert} showRemoveAlert={showRemoveAlert} />
     </div>
   );
