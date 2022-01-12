@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import ListTasks from "./ListTasks";
 
 export default function CreateTasks({ setshowAddAlert, setshowRemoveAlert }) {
-  
   function getTasks() {
     const tasksStore = JSON.parse(localStorage.getItem("tasks"));
 
     if (tasksStore) {
       return JSON.parse(localStorage.getItem("tasks"));
     }
+    return [];
   }
-
   const [task, setTask] = useState("");
   const [newTasks, setNewTasks] = useState(getTasks());
 
